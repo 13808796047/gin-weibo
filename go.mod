@@ -1,4 +1,4 @@
-module github.com/13808796047/gin-frame
+module gin-weibo
 
 go 1.13
 
