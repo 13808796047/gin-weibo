@@ -17,15 +17,14 @@ func webRoute(r *gin.Engine) *gin.Engine {
 	r.Static("/assets", "./assets")
 	r.LoadHTMLGlob("views/**/*")
 	r.GET("/", handlers.HomeIndex)
-	users := r.Group("/users")
-	{
-		users.GET("/index", handlers.UserIndex)
-	}
+	r.GET("users", handlers.UserIndex)
+	r.GET("signup", handlers.UserCreate)
+	return r
 }
 func apiRoute(r *gin.Engine) *gin.Engine {
-	r.GET("/", handlers.HomeIndex)
 	api := r.Group("/api")
 	{
-		api.GET("users/index", handlers.UserIndex)
+		api.GET("users", handlers.UserIndex)
 	}
+	return r
 }
