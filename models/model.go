@@ -9,7 +9,6 @@ import (
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-
 	_ "github.com/joho/godotenv/autoload"
 )
 
@@ -34,5 +33,6 @@ func Setup() {
 }
 
 func AutoMigrateAll() {
-	DB.AutoMigrate()
+
+	DB.AutoMigrate(&User{})
 }

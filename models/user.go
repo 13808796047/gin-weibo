@@ -1,12 +1,18 @@
 package models
 
-import "github.com/jinzhu/gorm"
+import (
+	"time"
+
+	"github.com/jinzhu/gorm"
+)
 
 type User struct {
-	Name     string `json:"name"`
-	Password string `json:"password"`
-	Email    string `json:"email"`
 	gorm.Model
+	Name            string    `json:"name" `
+	Password        string    `json:"password"`
+	Email           string    `json:"email" gorm:"unique"`
+	EmailVerifiedAt time.Time `json:"email_verified_at"`
+	RememberToken   string    `json:"remember_token"`
 }
 
 func GetUserTotal() (int, error) {
